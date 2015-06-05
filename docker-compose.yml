@@ -19,7 +19,7 @@ app:
 
 consul:
   image: progrium/consul:latest
-  command: -server -bootstrap -advertise $ROUTABLE_IP
+  command: -server -bootstrap -advertise 172.17.42.1
   ports:
   - "8300:8300"
   - "8400:8400"
