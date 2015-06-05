@@ -1,5 +1,6 @@
 balancer:
-  build: ../nginx
+  image: hadesarchitect/balancer:latest
+#  build: ../nginx
 #  command: php -S 0.0.0.0:8000 -t /code
 #  ports:
 #    - "8000:8000"
@@ -9,15 +10,16 @@ balancer:
 #    - .:/code
 
 app:
-  build: ../web-app
+  image: hadesarchitect/web-app:latest
+#  build: ../web-app
 #  environment:
 #    SERVICE_80_NAME: http
 #    SERVICE_NAME: app
 #    SERVICE_TAGS: production
 
 consul:
-  command: -server -bootstrap -advertise $ROUTABLE_IP
   image: progrium/consul:latest
+  command: -server -bootstrap -advertise $ROUTABLE_IP
   ports:
   - "8300:8300"
   - "8400:8400"
@@ -25,8 +27,8 @@ consul:
   - "8600:53/udp"
 
 registrator:
-  command: consul://consul:8500
   image: progrium/registrator:latest
+  command: consul://consul:8500
   links:
   - consul
   volumes:
