@@ -1,5 +1,5 @@
 balancer:
-  image: hadesarchitect/balancer:latest
+  image: hadesarchitect/balancer:devel
 #  build: ../nginx
 #  command: php -S 0.0.0.0:8000 -t /code
 #  ports:
@@ -10,7 +10,7 @@ balancer:
 #    - .:/code
 
 app:
-  image: hadesarchitect/web-app:latest
+  image: hadesarchitect/web-app:devel
 #  build: ../web-app
 #  environment:
 #    SERVICE_80_NAME: http
