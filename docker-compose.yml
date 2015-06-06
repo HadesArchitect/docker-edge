@@ -1,13 +1,13 @@
 balancer:
-  image: hadesarchitect/balancer:devel
-#  build: ../nginx
+#  image: hadesarchitect/balancer:devel
+  links:
+  - consul
+#  ports:
+#  - "80:80"
+  build: ../balancer
 #  command: php -S 0.0.0.0:8000 -t /code
 #  ports:
 #    - "8000:8000"
-#  links:
-#    - db
-#  volumes:
-#    - .:/code
 
 app:
   image: hadesarchitect/web-app:devel
