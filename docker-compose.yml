@@ -1,21 +1,20 @@
 balancer:
-#  image: hadesarchitect/balancer:devel
+  build: ../balancer
   links:
   - consul
 #  ports:
 #  - "80:80"
-  build: ../balancer
-#  command: php -S 0.0.0.0:8000 -t /code
-#  ports:
-#    - "8000:8000"
+#  image: hadesarchitect/balancer:devel
 
 app:
-  image: hadesarchitect/web-app:devel
-#  build: ../web-app
-#  environment:
-#    SERVICE_80_NAME: http
-#    SERVICE_NAME: app
-#    SERVICE_TAGS: production
+  build: ../web-app
+  ports:
+  - "80"
+  environment:
+    SERVICE_80_NAME: http
+    SERVICE_NAME: app
+    SERVICE_TAGS: production
+#  image: hadesarchitect/web-app:devel
 
 consul:
   image: progrium/consul:latest
