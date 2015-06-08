@@ -1,13 +1,13 @@
 balancer:
-  build: ../balancer
+  build: ./balancer
   links:
   - consul
-#  ports:
-#  - "80:80"
+  ports:
+  - "81:80"
 #  image: hadesarchitect/balancer:devel
 
 app:
-  build: ../web-app
+  build: ./web-app
   ports:
   - "80"
   environment:
